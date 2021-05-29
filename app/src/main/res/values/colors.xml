@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_easy">#FFC100</color>
+    <color name="color_traditional">#FD6538</color>
+    <color name="color_seasonal">#F44235</color>
+    <color name="color_gluten">#8BC34A</color>
+
+    <color name="category_1">#FFC100</color>
+    <color name="category_2">#FD6538</color>
+    <color name="category_3">#F44235</color>
+    <color name="category_4">#8BC34A</color>
+
 </resources>

@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">NestiMobile</string>
+    <string name="txt_btn_easy">Facile à faire</string>
+    <string name="txt_btn_traditional">Traditionnelles</string>
+    <string name="txt_btn_season">C\'est de saison</string>
+    <string name="txt_button_gluten">Sans gluten</string>
+    <string name="txt_txtViewTitle">Choisissez une catégorie</string>
+    <string name="txt_menu_search">Rechercher une recette</string>
+    <string name="txt_menu_list">Liste de courses</string>
+    <string name="txt_menu_presentation">Présentation</string>
+    <string name="txt_menu_contact">Contact</string>
+    <string name="txt_menu_team">Equipe</string>
+    <string name="txt_menu_project">Projet</string>
+    <string name="txt_activity_easy">Liste des recettes faciles</string>
+    <string name="txt_activity_gluten">Liste des recettes sans gluten</string>
+    <string name="txt_activity_season">Liste des recettes de saison</string>
+    <string name="txt_activity_traditional">Liste des recettes traditionnelles</string>
+    <string name="txt_btn_back">Retour</string>
+    <string name="txt_line_recipe_txtView_title">Titre</string>
+    <string name="txt_line_recipe_txtView_author">Auteur</string>
+    <string name="title_activity_tab_recipe">TabRecipeActivity</string>
+    <string name="tab_text_1">Préparation</string>
+    <string name="tab_text_2">Ingrédients</string>
 </resources>
