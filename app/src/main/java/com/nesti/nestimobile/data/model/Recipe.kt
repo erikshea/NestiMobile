@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 data class Recipe(
     @SerializedName("id")
     val id: Int = 0,
-    @SerializedName("title")
+    @SerializedName("name")
     val name: String = "",
     @SerializedName("difficulty")
-    val email: String = "",
+    val difficulty: Int = 0,
     @SerializedName("author")
-    val avatar: String = "",
+    val author: String = "",
      @SerializedName("image")
     val image: String = ""
 )

@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.ui.main.adapter.MainAdapter
-import com.nesti.nestimobile.data.api.ApiServiceImpl
+import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Tag
-import com.nesti.nestimobile.data.model.User
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
 import com.nesti.nestimobile.utils.ApiHelper
@@ -73,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewModel() {
         mainViewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(ApiServiceImpl()))
+            ViewModelFactory(ApiHelper(ApiService()))
         ).get(MainViewModel::class.java)
     }
 }

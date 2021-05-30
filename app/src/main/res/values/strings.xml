@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">NestiMobile</string>
-    <string name="txt_btn_easy">Facile à faire</string>
-    <string name="txt_btn_traditional">Traditionnelles</string>
-    <string name="txt_btn_season">C\'est de saison</string>
-    <string name="txt_button_gluten">Sans gluten</string>
+    <string name="category_easy">Facile à faire</string>
+    <string name="category_traditional">Traditionnelles</string>
+    <string name="category_season">C\'est de saison</string>
+    <string name="category_gluten_free">Sans gluten</string>
     <string name="txt_txtViewTitle">Choisissez une catégorie</string>
     <string name="txt_menu_search">Rechercher une recette</string>
     <string name="txt_menu_list">Liste de courses</string>

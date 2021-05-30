@@ -8,23 +8,27 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nesti.nestimobile.R
 import com.nesti.nestimobile.ui.main.adapter.MainAdapter
-import com.nesti.nestimobile.data.api.ApiServiceImpl
+import com.nesti.nestimobile.data.api.ApiService
+import com.nesti.nestimobile.data.model.Recipe
 import com.nesti.nestimobile.data.model.User
 import com.nesti.nestimobile.ui.base.ViewModelFactory
+import com.nesti.nestimobile.ui.main.adapter.CategoryAdapter
+import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
 import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
 import com.nesti.nestimobile.utils.ApiHelper
 import com.nesti.nestimobile.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
-/*
+
 class CategoryActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
-    private lateinit var adapter: MainAdapter
+    private lateinit var viewModel: CategoryViewModel
+    private lateinit var adapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_category)
         setupUI()
         setupViewModel()
         setupObserver()
@@ -32,7 +36,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setupUI() {
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MainAdapter(arrayListOf())
+        adapter = CategoryAdapter(arrayListOf())
         recyclerView.addItemDecoration(
             DividerItemDecoration(
                 recyclerView.context,
@@ -43,11 +47,11 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
-        mainViewModel.getUsers().observe(this, Observer {
+        viewModel.getRecipes().observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
-                    it.data?.let { users -> renderList(users) }
+                    it.data?.let { recipes -> renderList(recipes) }
                     recyclerView.visibility = View.VISIBLE
                 }
                 Status.LOADING -> {
@@ -63,15 +67,15 @@ class CategoryActivity : AppCompatActivity() {
         })
     }
 
-    private fun renderList(users: List<User>) {
-        adapter.addData(users)
+    private fun renderList(recipes: List<Recipe>) {
+        adapter.addData(recipes)
         adapter.notifyDataSetChanged()
     }
 
     private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(
+        viewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(ApiServiceImpl()))
-        ).get(MainViewModel::class.java)
+            ViewModelFactory(ApiHelper(ApiService()))
+        ).get(CategoryViewModel::class.java)
     }
-}*/
+}

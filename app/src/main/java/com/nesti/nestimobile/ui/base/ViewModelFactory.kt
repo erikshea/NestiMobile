@@ -2,7 +2,9 @@ package com.nesti.nestimobile.ui.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.nesti.nestimobile.data.repository.MainRepository
+import com.nesti.nestimobile.data.repository.RecipeRepository
+import com.nesti.nestimobile.data.repository.TagRepository
+import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
 import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
 import com.nesti.nestimobile.utils.ApiHelper
 
@@ -10,10 +12,19 @@ import com.nesti.nestimobile.utils.ApiHelper
 class ViewModelFactory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        var viewModel:T? = null
+
         if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(MainRepository(apiHelper)) as T
+            viewModel =  MainViewModel(TagRepository(apiHelper)) as T
+        } else if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
+            viewModel =  CategoryViewModel(RecipeRepository(apiHelper)) as T
         }
-        throw IllegalArgumentException("Unknown class name")
+
+        if ( viewModel == null){
+            throw IllegalArgumentException("Viewmodel class $modelClass not defined in factory")
+        }
+
+        return viewModel;
     }
 
 }
