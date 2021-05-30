@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.model.Recipe
-import com.nesti.nestimobile.data.model.User
-import kotlinx.android.synthetic.main.item_layout.view.*
 import kotlinx.android.synthetic.main.item_layout_recipe.view.*
 
-class CategoryAdapter(
+class RecipeListAdapter(
         private val recipes: ArrayList<Recipe>
-        ) : RecyclerView.Adapter<CategoryAdapter.DataViewHolder>() {
+        ) : RecyclerView.Adapter<RecipeListAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(recipe: Recipe) {
