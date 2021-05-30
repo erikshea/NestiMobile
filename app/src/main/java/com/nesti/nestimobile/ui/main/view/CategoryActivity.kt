@@ -1,25 +1,23 @@
 package com.nesti.nestimobile.ui.main.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Recipe
-import com.nesti.nestimobile.data.model.User
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.CategoryAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
-import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
 import com.nesti.nestimobile.utils.ApiHelper
 import com.nesti.nestimobile.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class CategoryActivity : AppCompatActivity() {
 
@@ -38,10 +36,10 @@ class CategoryActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = CategoryAdapter(arrayListOf())
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                recyclerView.context,
-                (recyclerView.layoutManager as LinearLayoutManager).orientation
-            )
+                DividerItemDecoration(
+                        recyclerView.context,
+                        (recyclerView.layoutManager as LinearLayoutManager).orientation
+                )
         )
         recyclerView.adapter = adapter
     }
@@ -74,8 +72,11 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(ApiHelper(ApiService()))
+                this,
+                ViewModelFactory(ApiHelper(ApiService()))
         ).get(CategoryViewModel::class.java)
+
+        val intent = intent
+        viewModel.idTag = intent.getIntExtra("com.nesti.nestimobile.idTag",0);
     }
 }

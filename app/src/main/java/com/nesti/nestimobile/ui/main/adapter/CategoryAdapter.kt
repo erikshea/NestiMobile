@@ -18,9 +18,11 @@ class CategoryAdapter(
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(recipe: Recipe) {
             itemView.textView_recipe_title.text = recipe.name
-//            Glide.with(itemView.imageViewAvatar.context)
-//                .load(user.avatar)
-//                .into(itemView.imageViewAvatar)
+            itemView.textView_recipe_title.text = recipe.name
+            //itemView.textView_recipe_image.text = recipe.name
+            Glide.with(itemView.imageView_recipe_image.context)
+                .load(recipe.image)
+                .into(itemView.imageView_recipe_image)
         }
     }
 

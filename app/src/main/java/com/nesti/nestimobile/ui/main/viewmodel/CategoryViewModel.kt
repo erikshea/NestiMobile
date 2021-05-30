@@ -16,14 +16,12 @@ class CategoryViewModel(private val recipeRepository: RecipeRepository) : ViewMo
     private val recipes = MutableLiveData<Resource<List<Recipe>>>()
     private val compositeDisposable = CompositeDisposable()
 
-    init {
-        fetchRecipes()
-    }
+    public var idTag:Int = 0;
 
     private fun fetchRecipes() {
         recipes.postValue(Resource.loading(null))
         compositeDisposable.add(
-                recipeRepository.findAllForTag(1)
+                recipeRepository.findAllForTag(idTag)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ tagList ->
@@ -40,6 +38,10 @@ class CategoryViewModel(private val recipeRepository: RecipeRepository) : ViewMo
     }
 
     fun getRecipes(): LiveData<Resource<List<Recipe>>> {
+        if ( recipes.value == null ){
+            fetchRecipes();
+        }
+
         return recipes
     }
 }

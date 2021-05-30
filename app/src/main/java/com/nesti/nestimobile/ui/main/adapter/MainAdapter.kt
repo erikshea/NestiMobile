@@ -39,7 +39,7 @@ class MainAdapter(
 
             itemView.buttonCategory.setOnClickListener {
                 val intent = Intent(it.context, CategoryActivity::class.java);
-                intent.putExtra("com.nesti.nestimobile.test", "message");
+                intent.putExtra("com.nesti.nestimobile.idTag", tag.idTag);
                 startActivity(it.context,intent, Bundle.EMPTY);
             }
         }
