@@ -44,7 +44,7 @@
         android:id="@+id/imageView_recipe_difficulty"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_medium"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/textView_recipe_author"

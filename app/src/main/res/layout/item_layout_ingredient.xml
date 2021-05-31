@@ -4,14 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_ingredient"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/textView_ingredient_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        tools:text="[NAME]"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView_ingredient_quantity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/item_ingredient_quantity_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ingredient_name" />
 
+    <TextView
+        android:id="@+id/textView_ingredient_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="[QUANTITY]"
+        app:layout_constraintStart_toEndOf="@+id/textView_ingredient_quantity_label"
+        app:layout_constraintTop_toTopOf="@+id/textView_ingredient_quantity_label" />
+
+    <TextView
+        android:id="@+id/textView_ingredient_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="[UNIT]"
+        app:layout_constraintStart_toEndOf="@+id/textView_ingredient_quantity"
+        app:layout_constraintTop_toTopOf="@+id/textView_ingredient_quantity" />
 </androidx.constraintlayout.widget.ConstraintLayout>

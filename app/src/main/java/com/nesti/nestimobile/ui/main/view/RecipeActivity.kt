@@ -46,46 +46,6 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-
-        setupObserver()
-    }
-
-    override fun setupUI() {
-        /*recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = MainAdapter(arrayListOf())
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                recyclerView.context,
-                (recyclerView.layoutManager as LinearLayoutManager).orientation
-            )
-        )
-        recyclerView.adapter = adapter*/
-    }
-
-    private fun setupObserver() {
-        /*viewModel.getTags().observe(this, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    progressBar.visibility = View.GONE
-                    it.data?.let { tags -> renderList(tags) }
-                    recyclerView.visibility = View.VISIBLE
-                }
-                Status.LOADING -> {
-                    progressBar.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
-                }
-                Status.ERROR -> {
-                    //Handle Error
-                    progressBar.visibility = View.GONE
-                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                }
-            }
-        })*/
-    }
-
-    private fun renderList(tags: List<Tag>) {
-        /*adapter.addData(tags)
-        adapter.notifyDataSetChanged()*/
     }
 
     override fun setupViewModel() {
@@ -95,5 +55,8 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
         ).get(RecipeViewModel::class.java)
 
         viewModel.recipe = intent.getParcelableExtra("com.nesti.nestimobile.recipe")!!;
+    }
+
+    override fun setupUI() {
     }
 }

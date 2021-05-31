@@ -24,4 +24,5 @@
     <string name="title_activity_tab_recipe">TabRecipeActivity</string>
     <string name="tab_text_1">Préparation</string>
     <string name="tab_text_2">Ingrédients</string>
+    <string name="item_ingredient_quantity_label">Quantité : </string>
 </resources>

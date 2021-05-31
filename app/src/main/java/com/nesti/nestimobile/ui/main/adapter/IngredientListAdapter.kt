@@ -15,6 +15,8 @@ class IngredientListAdapter(
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(ingredientRecipe: IngredientRecipe) {
             itemView.textView_ingredient_name.text = ingredientRecipe.name
+            itemView.textView_ingredient_quantity.text = ingredientRecipe.quantity.toString()
+            itemView.textView_ingredient_unit.text = ingredientRecipe.unitName
         }
     }
 
