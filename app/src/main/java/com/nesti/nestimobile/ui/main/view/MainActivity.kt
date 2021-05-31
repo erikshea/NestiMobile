@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Tag
 import com.nesti.nestimobile.ui.base.ViewModelFactory
+import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
 import com.nesti.nestimobile.utils.ApiHelper
 import com.nesti.nestimobile.utils.Status
@@ -30,10 +30,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         adapter = MainAdapter(arrayListOf())
         recycler_view.addItemDecoration(
-            DividerItemDecoration(
-                recycler_view.context,
-                (recycler_view.layoutManager as LinearLayoutManager).orientation
-            )
+                DividerItemDecoration(
+                        recycler_view.context,
+                        (recycler_view.layoutManager as LinearLayoutManager).orientation
+                )
         )
         recycler_view.adapter = adapter
     }
@@ -66,8 +66,8 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun setupViewModel() {
         viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(ApiHelper(ApiService()))
+                this,
+                ViewModelFactory(ApiHelper(ApiService()))
         ).get(MainViewModel::class.java)
     }
 }

@@ -13,12 +13,12 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class CategoryViewModel(private val recipeRepository: RecipeRepository) : BaseRecipeListViewModel(recipeRepository) {
-    public var idTag:Int = 0;
+    lateinit var tag:Tag;
 
     override fun fetchRecipes() {
         recipes.postValue(Resource.loading(null))
         compositeDisposable.add(
-                recipeRepository.findAllForTag(idTag)
+                recipeRepository.findAllForTag(tag.idTag)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ tagList ->

@@ -7,7 +7,7 @@
     android:layout_height="150dp">
 
     <Button
-        android:id="@+id/buttonCategory"
+        android:id="@+id/button_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,7 +16,6 @@
         android:layout_marginRight="@dimen/margin_medium"
         android:height="@dimen/btn_std_height"
         android:text=""
-        app:backgroundTint="@color/color_traditional"
         app:layout_constraintTop_toTopOf="parent"/>
 
 

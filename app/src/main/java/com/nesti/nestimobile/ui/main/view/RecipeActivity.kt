@@ -46,6 +46,7 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+        title = viewModel.recipe.name;
     }
 
     override fun setupViewModel() {

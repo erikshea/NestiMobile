@@ -28,16 +28,6 @@ abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
     override fun onCreateOptionsMenu(pMenu: Menu): Boolean {
         val inflater = this.menuInflater
         inflater.inflate(R.menu.menu_general, pMenu)
-        /*var t = pMenu.findItem(R.id.menu_search)
-        var t2 = pMenu.findItem(R.id.menu_search).actionView
-        var t3  = R.id.menu_list
-        // Get the SearchView and set the searchable configuration
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (pMenu.findItem(R.id.menu_search).actionView as SearchView).apply {
-            // Assumes current activity is the searchable activity
-            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-            setIconifiedByDefault(false) // Do not iconify the widget; expand it by default
-        }*/
 
         return true
     }
@@ -51,10 +41,6 @@ abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
 
             R.id.menu_list -> {
 
-            }
-            R.id.menu_contact -> {
-                //val intent = Intent(this, TabRecipeActivity::class.java)
-                //tartActivity(intent)
             }
         }
         return true

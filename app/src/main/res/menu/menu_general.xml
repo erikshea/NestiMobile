@@ -8,20 +8,4 @@
     <item
         android:id="@+id/menu_list"
         android:title="@string/txt_menu_list" />
-
-    <item
-        android:id="@+id/menu_presentation"
-        android:title="@string/txt_menu_presentation">
-        <menu >
-            <item
-                android:id="@+id/menu_contact"
-                android:title="@string/txt_menu_contact" />
-            <item
-                android:id="@+id/menu_team"
-                android:title="@string/txt_menu_team"   />
-            <item
-                android:id="@+id/menu_project"
-                android:title="@string/txt_menu_project" />
-        </menu>
-    </item>
 </menu>

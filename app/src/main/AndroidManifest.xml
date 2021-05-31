@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.NestiMobile">
-        <activity android:name=".ui.main.view.MainActivity">
+        <activity
+            android:name=".ui.main.view.MainActivity"
+            android:label="Choisir une catégorie"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
