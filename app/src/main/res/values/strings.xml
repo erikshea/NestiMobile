@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">NestiMobile</string>
+    <string name="search_hint">Trouver une recette...</string>
     <string name="category_easy">Facile à faire</string>
     <string name="category_traditional">Traditionnelles</string>
     <string name="category_season">C\'est de saison</string>
     <string name="category_gluten_free">Sans gluten</string>
+    <string name="recipe_tab_title_ingredients">ingredients</string>
+    <string name="recipe_tab_title_steps">Étapes</string>
     <string name="txt_txtViewTitle">Choisissez une catégorie</string>
     <string name="txt_menu_search">Rechercher une recette</string>
     <string name="txt_menu_list">Liste de courses</string>

@@ -1,5 +1,7 @@
 package com.nesti.nestimobile.ui.main.view
 
+import android.app.SearchManager
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -23,6 +25,14 @@ class SearchResultsActivity : BaseRecipeListActivity<SearchResultsViewModel>() {
             ViewModelFactory(ApiHelper(ApiService()))
         ).get(SearchResultsViewModel::class.java)
 
-        viewModel.searchTerm = intent.getStringExtra("com.nesti.nestimobile.searchTerm").toString()
+        //viewModel.searchTerm = intent.getStringExtra("com.nesti.nestimobile.searchTerm").toString()
+
+        // Verify the action and get the query
+        if (Intent.ACTION_SEARCH == intent.action) {
+            intent.getStringExtra(SearchManager.QUERY)?.also { query ->
+                viewModel.searchTerm = query
+            }
+        }
     }
+
 }
