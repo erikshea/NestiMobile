@@ -19,4 +19,8 @@ data class IngredientRecipe(
         var unitName: String = "",
         @SerializedName("name")
         var name: String = ""
-)
+) {
+        fun getIngredient():Ingredient{
+                return Ingredient(idIngredient=idIngredient,name=name)
+        }
+}

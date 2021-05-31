@@ -15,7 +15,9 @@
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
         android:height="@dimen/btn_std_height"
+        android:textAllCaps="false"
         android:text=""
+        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"/>
 
 

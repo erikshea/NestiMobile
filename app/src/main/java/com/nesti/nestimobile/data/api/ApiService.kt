@@ -7,8 +7,8 @@ import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Single
 
 class ApiService  {
-    //val apiUrl = "http://10.0.2.2/php/nesti_administration/api";
-    val apiUrl = "https://temeta.com/nesti/administration/api";
+    val apiUrl = "http://10.0.2.2/php/nesti_administration/api";
+    //val apiUrl = "https://temeta.com/nesti/administration/api";
 
     fun getRecipesForTag(idTag:Int): Single<List<Recipe>> {
         return Rx2AndroidNetworking.get("$apiUrl/recipesForTag/$idTag")
