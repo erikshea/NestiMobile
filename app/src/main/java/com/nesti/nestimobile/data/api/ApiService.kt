@@ -1,19 +1,10 @@
 package com.nesti.nestimobile.data.api
 
-import com.nesti.nestimobile.data.model.Recipe
-import com.nesti.nestimobile.data.model.Tag
-import com.nesti.nestimobile.data.model.User
+import com.nesti.nestimobile.data.model.*
 import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Single
 
 class ApiService  {
-
-    fun getUsers(): Single<List<User>> {
-        return Rx2AndroidNetworking.get("https://5e510330f2c0d300147c034c.mockapi.io/users")
-            .build()
-            .getObjectListSingle(User::class.java)
-    }
-
     fun getRecipesForTag(idTag:Int): Single<List<Recipe>> {
         return Rx2AndroidNetworking.get("http://10.0.2.2/php/nesti_administration/api/recipesForTag/${idTag}")
                 .build()
@@ -29,5 +20,17 @@ class ApiService  {
         return Rx2AndroidNetworking.get("http://10.0.2.2/php/nesti_administration/api/tags")
                 .build()
                 .getObjectListSingle(Tag::class.java)
+    }
+
+    fun getIngredientRecipes(idRecipe:Int): Single<List<IngredientRecipe>> {
+        return Rx2AndroidNetworking.get("http://10.0.2.2/php/nesti_administration/api/ingredientRecipes/${idRecipe}")
+                .build()
+                .getObjectListSingle(IngredientRecipe::class.java)
+    }
+
+    fun getParagraphs(idRecipe:Int): Single<List<Paragraph>> {
+        return Rx2AndroidNetworking.get("http://10.0.2.2/php/nesti_administration/api/paragraphs/${idRecipe}")
+                .build()
+                .getObjectListSingle(Paragraph::class.java)
     }
 }

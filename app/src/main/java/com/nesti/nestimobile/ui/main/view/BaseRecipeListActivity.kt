@@ -23,15 +23,15 @@ abstract class BaseRecipeListActivity<TViewModel: BaseRecipeListViewModel> : Bas
         setupObserver()
     }
     override fun setupUI() {
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recycler_view.layoutManager = LinearLayoutManager(this)
         adapter = RecipeListAdapter(arrayListOf())
-        recyclerView.addItemDecoration(
+        recycler_view.addItemDecoration(
                 DividerItemDecoration(
-                        recyclerView.context,
-                        (recyclerView.layoutManager as LinearLayoutManager).orientation
+                        recycler_view.context,
+                        (recycler_view.layoutManager as LinearLayoutManager).orientation
                 )
         )
-        recyclerView.adapter = adapter
+        recycler_view.adapter = adapter
     }
 
     protected fun renderList(recipes: List<Recipe>) {
@@ -43,17 +43,17 @@ abstract class BaseRecipeListActivity<TViewModel: BaseRecipeListViewModel> : Bas
         viewModel.getRecipes().observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
-                    progressBar.visibility = View.GONE
+                    progress_bar.visibility = View.GONE
                     it.data?.let { recipes -> renderList(recipes) }
-                    recyclerView.visibility = View.VISIBLE
+                    recycler_view.visibility = View.VISIBLE
                 }
                 Status.LOADING -> {
-                    progressBar.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
+                    progress_bar.visibility = View.VISIBLE
+                    recycler_view.visibility = View.GONE
                 }
                 Status.ERROR -> {
                     //Handle Error
-                    progressBar.visibility = View.GONE
+                    progress_bar.visibility = View.GONE
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }
             }
