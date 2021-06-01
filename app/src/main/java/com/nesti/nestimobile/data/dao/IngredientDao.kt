@@ -10,16 +10,17 @@ import com.nesti.nestimobile.data.model.Ingredient
 class IngredientDao(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "NestiShoppingList"
+        private val DATABASE_NAME = "NestiShoppingList2"
         private val TABLE_NAME = "ingredient"
         private val KEY_ID_INGREDIENT = "idIngredient"
         private val KEY_NAME = "name"
+        private val KEY_IS_CHECKED = "isChecked"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         //creating table with fields
-        val CREATE_TABLE = ("CREATE TABLE " + TABLE_NAME + "("
-                + KEY_ID_INGREDIENT + " INTEGER PRIMARY KEY," + KEY_NAME + ")")
+        val CREATE_TABLE = (
+                "CREATE TABLE $TABLE_NAME($KEY_ID_INGREDIENT INTEGER PRIMARY KEY, $KEY_NAME TEXT, $KEY_IS_CHECKED INTEGER)")
         db?.execSQL(CREATE_TABLE)
     }
 
@@ -37,23 +38,27 @@ class IngredientDao(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,nu
         }
     }
 
-    fun save(ingredient: Ingredient):Long{
-        val db = this.writableDatabase
+    private fun getContentValues(ingredient: Ingredient):ContentValues{
         val contentValues = ContentValues()
         contentValues.put(KEY_ID_INGREDIENT, ingredient.idIngredient)
         contentValues.put(KEY_NAME, ingredient.name)
-        val success = db.insert(TABLE_NAME, null, contentValues)
+        contentValues.put(KEY_IS_CHECKED, ingredient.isChecked)
+        return contentValues
+    }
+
+    fun save(ingredient: Ingredient):Long{
+        val db = this.writableDatabase
+        val success = db.insert(TABLE_NAME, null, getContentValues(ingredient))
         db.close()
         return success
     }
     //method to update data
     fun update(ingredient: Ingredient):Int{
         val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put(KEY_ID_INGREDIENT, ingredient.idIngredient)
-        contentValues.put(KEY_NAME, ingredient.name)
-
-        val success = db.update(TABLE_NAME, contentValues,"idIngredient="+ingredient.idIngredient,null)
+        val success = db.update(
+            TABLE_NAME,
+            getContentValues(ingredient),
+            "idIngredient="+ingredient.idIngredient,null)
         db.close() // Closing database connection
         return success
     }
@@ -110,9 +115,11 @@ class IngredientDao(context: Context): SQLiteOpenHelper(context,DATABASE_NAME,nu
     protected fun cursorToEntity(cursor:Cursor):Ingredient{
         val idIngredient = cursor.getInt(cursor.getColumnIndex("idIngredient"))
         val name = cursor.getString(cursor.getColumnIndex("name"))
+        val isChecked = cursor.getInt(cursor.getColumnIndex("isChecked"))
         val ingredient = Ingredient()
         ingredient.idIngredient = idIngredient
         ingredient.name = name
+        ingredient.isChecked = isChecked
         return ingredient
     }
 }

@@ -1,8 +1,11 @@
 package com.nesti.nestimobile.ui.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,14 +15,10 @@ import com.google.android.material.tabs.TabLayout
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.data.api.ApiService
-import com.nesti.nestimobile.data.model.Recipe
-import com.nesti.nestimobile.data.model.Tag
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.RecipeStateAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.RecipeViewModel
 import com.nesti.nestimobile.utils.ApiHelper
-import com.nesti.nestimobile.utils.Status
-import kotlinx.android.synthetic.main.activity_main.*
 
 class RecipeActivity : BaseActivity<RecipeViewModel>() {
     lateinit var tabLayout: TabLayout
@@ -59,5 +58,10 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
     }
 
     override fun setupUI() {
+    }
+
+    fun fabShoppingListClicked(view: View) {
+        val intent = Intent(view.context, ShoppingListActivity::class.java);
+        ContextCompat.startActivity(view.context, intent, Bundle.EMPTY);
     }
 }

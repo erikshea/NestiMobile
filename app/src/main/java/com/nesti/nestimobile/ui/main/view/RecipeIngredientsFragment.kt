@@ -1,7 +1,9 @@
 package com.nesti.nestimobile.ui.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -58,4 +60,11 @@ class RecipeIngredientsFragment() : BaseRecipeFragment()  {
         adapter.addData(items)
         adapter.notifyDataSetChanged()
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
+
 }

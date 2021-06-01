@@ -10,38 +10,23 @@ import com.nesti.nestimobile.data.model.Ingredient
 import com.nesti.nestimobile.data.model.Tag
 import com.nesti.nestimobile.data.repository.TagRepository
 import com.nesti.nestimobile.utils.Resource
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
-class ShoppingListViewModel() : AndroidViewModel() {
+class ShoppingListViewModel(application: Application) : AndroidViewModel(application) {
     private val ingredients = MutableLiveData<Resource<List<Ingredient>>>()
-
+    val context  = application
     // will dispose Single containing tag list when activity changes
-    private val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = io.reactivex.rxjava3.disposables.CompositeDisposable()
 
     init {
         fetchIngredients()
     }
 
-    private fun fetchIngredients() {
-        val ingredientDao = IngredientDao(getApplication<Application>().applicationContext)
-        val ingredients = ingredientDao.findAll()
-        val ingredientsSingle: Single<List<Ingredient>>
-
-        ingredients.postValue(Resource.loading(null))
-        compositeDisposable.add(
-            ingredientDao.findAll()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ list ->
-                            ingredients.postValue(Resource.success(list))
-                        }, { throwable ->
-                            throwable.printStackTrace();
-                            ingredients.postValue(Resource.error("Something Went Wrong", null))
-                        })
-        )
+    public fun fetchIngredients() {
+        val ingredientDao = IngredientDao(context)
+        ingredients.setValue(Resource.success(ingredientDao.findAll()))
+        println("ddd")
     }
 
     // Called when VM is no longer needed (activity changed...)
@@ -50,7 +35,7 @@ class ShoppingListViewModel() : AndroidViewModel() {
         compositeDisposable.dispose() // dispose Single on activity change
     }
 
-    fun getTags(): LiveData<Resource<List<Ingredient>>> {
+    fun getIngredients(): LiveData<Resource<List<Ingredient>>> {
         return ingredients
     }
 }

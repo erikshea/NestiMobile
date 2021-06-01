@@ -27,6 +27,7 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity android:name=".ui.main.view.CategoryActivity" />
+        <activity android:name=".ui.main.view.ShoppingListActivity" />
         <activity android:name=".ui.main.view.RecipeActivity" />
         <meta-data android:name="android.app.default_searchable"
             android:value="com.nesti.nestimobile.ui.main.view.SearchResultsActivity" />

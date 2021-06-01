@@ -11,7 +11,6 @@ import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.RecipeListAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
 import com.nesti.nestimobile.utils.ApiHelper
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class CategoryActivity : BaseRecipeListActivity<CategoryViewModel>() {

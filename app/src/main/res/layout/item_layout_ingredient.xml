@@ -40,4 +40,15 @@
         tools:text="[UNIT]"
         app:layout_constraintStart_toEndOf="@+id/textView_ingredient_quantity"
         app:layout_constraintTop_toTopOf="@+id/textView_ingredient_quantity" />
+
+    <TextView
+        android:id="@+id/textView_ingredient_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text=""
+        android:fontFamily="@font/fa_solid_900"
+        android:textColor="#004581"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

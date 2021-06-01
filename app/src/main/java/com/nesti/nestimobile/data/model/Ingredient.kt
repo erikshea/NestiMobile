@@ -8,16 +8,20 @@ data class Ingredient(
     @SerializedName("idIngredient")
     var idIngredient: Int = 0,
     @SerializedName("name")
-    var name: String = ""
+    var name: String = "",
+    @SerializedName("isChecked")
+    var isChecked: Int = 0
 ) : Parcelable {
     constructor(parcel: Parcel) : this() {
         idIngredient = parcel.readInt()
         name = parcel.readString().toString()
+        isChecked = parcel.readInt()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(idIngredient);
         parcel.writeString(name);
+        parcel.writeInt(isChecked);
     }
 
     override fun describeContents(): Int {

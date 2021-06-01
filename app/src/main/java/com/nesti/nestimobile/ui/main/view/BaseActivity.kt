@@ -15,7 +15,6 @@ abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recipe_list)
         setupUI()
         setupViewModel()
     }

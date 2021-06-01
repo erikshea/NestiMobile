@@ -10,11 +10,8 @@ import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Recipe
 import com.nesti.nestimobile.ui.base.ViewModelFactory
-import com.nesti.nestimobile.ui.main.adapter.RecipeListAdapter
-import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
 import com.nesti.nestimobile.ui.main.viewmodel.SearchResultsViewModel
 import com.nesti.nestimobile.utils.ApiHelper
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class SearchResultsActivity : BaseRecipeListActivity<SearchResultsViewModel>() {

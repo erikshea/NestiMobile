@@ -11,7 +11,7 @@ import com.nesti.nestimobile.data.model.Recipe
 import com.nesti.nestimobile.ui.main.adapter.RecipeListAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.BaseRecipeListViewModel
 import com.nesti.nestimobile.utils.Status
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_recipe_list.*
 
 
 abstract class BaseRecipeListActivity<TViewModel: BaseRecipeListViewModel> : BaseActivity<TViewModel>() {
