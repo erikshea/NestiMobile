@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ShoppingListViewModel(application: Application) : AndroidViewModel(application) {
-    private val ingredients = MutableLiveData<Resource<List<Ingredient>>>()
+    public val ingredients = MutableLiveData<Resource<List<Ingredient>>>()
     val context  = application
     // will dispose Single containing tag list when activity changes
     private val compositeDisposable = io.reactivex.rxjava3.disposables.CompositeDisposable()
@@ -26,7 +26,6 @@ class ShoppingListViewModel(application: Application) : AndroidViewModel(applica
     public fun fetchIngredients() {
         val ingredientDao = IngredientDao(context)
         ingredients.setValue(Resource.success(ingredientDao.findAll()))
-        println("ddd")
     }
 
     // Called when VM is no longer needed (activity changed...)
@@ -37,5 +36,17 @@ class ShoppingListViewModel(application: Application) : AndroidViewModel(applica
 
     fun getIngredients(): LiveData<Resource<List<Ingredient>>> {
         return ingredients
+    }
+
+
+
+    fun deleteAll(){
+        val ingredientDao = IngredientDao(context)
+
+        ingredients.value?.data?.forEach {
+            ingredientDao.delete(it)
+        }
+
+        ingredients.value = Resource.success(listOf());
     }
 }

@@ -39,16 +39,6 @@ class IngredientListAdapter(
                 }
             }
         }
-
-        private fun setupChangeButton(button:TextView, ingredient: Ingredient){
-            if (ingredientDao.findById(ingredient.idIngredient) == null) {
-                ingredientDao.saveOrUpdate(ingredient)
-                itemView.textView_ingredient_add.text = "\uF146";
-            } else {
-                ingredientDao.delete(ingredient)
-                itemView.textView_ingredient_add.text = "";
-            }
-        }
     }
 
 

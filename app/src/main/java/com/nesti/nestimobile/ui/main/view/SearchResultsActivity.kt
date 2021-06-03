@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Recipe
+import com.nesti.nestimobile.lib.NestiMobileApplication
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.viewmodel.SearchResultsViewModel
 import com.nesti.nestimobile.utils.ApiHelper
@@ -19,7 +20,7 @@ class SearchResultsActivity : BaseRecipeListActivity<SearchResultsViewModel>() {
     override fun setupViewModel() {
         viewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(ApiService()))
+            ViewModelFactory(ApiHelper(ApiService((applicationContext as NestiMobileApplication).configuration)))
         ).get(SearchResultsViewModel::class.java)
 
         //viewModel.searchTerm = intent.getStringExtra("com.nesti.nestimobile.searchTerm").toString()

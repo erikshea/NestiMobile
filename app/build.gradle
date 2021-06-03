@@ -49,4 +49,5 @@ dependencies {
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.2'
     implementation 'org.xerial:sqlite-jdbc:3.34.0'
     implementation "io.reactivex.rxjava3:rxjava:3.0.12"
+    implementation group: 'org.dom4j', name: 'dom4j', version: '2.1.3'
 }

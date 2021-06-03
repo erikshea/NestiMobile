@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.data.api.ApiService
+import com.nesti.nestimobile.lib.NestiMobileApplication
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.RecipeStateAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.RecipeViewModel
@@ -51,7 +52,7 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
     override fun setupViewModel() {
         viewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(ApiService()))
+            ViewModelFactory(ApiHelper(ApiService((applicationContext as NestiMobileApplication).configuration)))
         ).get(RecipeViewModel::class.java)
 
         viewModel.recipe = intent.getParcelableExtra("com.nesti.nestimobile.recipe")!!;

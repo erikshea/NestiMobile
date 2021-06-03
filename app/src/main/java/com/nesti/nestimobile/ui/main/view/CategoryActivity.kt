@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.data.model.Recipe
+import com.nesti.nestimobile.lib.NestiMobileApplication
 import com.nesti.nestimobile.ui.base.ViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.RecipeListAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.CategoryViewModel
@@ -23,7 +24,7 @@ class CategoryActivity : BaseRecipeListActivity<CategoryViewModel>() {
     override fun setupViewModel() {
         viewModel = ViewModelProviders.of(
             this,
-            ViewModelFactory(ApiHelper(ApiService()))
+            ViewModelFactory(ApiHelper(ApiService((applicationContext as NestiMobileApplication).configuration)))
         ).get(CategoryViewModel::class.java)
 
         viewModel.tag = intent.getParcelableExtra("com.nesti.nestimobile.tag")!!;

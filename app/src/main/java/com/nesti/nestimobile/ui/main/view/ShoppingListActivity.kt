@@ -14,6 +14,7 @@ import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.model.Ingredient
 import com.nesti.nestimobile.ui.main.adapter.ShoppingListAdapter
 import com.nesti.nestimobile.ui.main.viewmodel.ShoppingListViewModel
+import com.nesti.nestimobile.utils.Resource
 import com.nesti.nestimobile.utils.Status
 import kotlinx.android.synthetic.main.activity_shopping_list.*
 
@@ -71,21 +72,9 @@ class ShoppingListActivity : BaseActivity<ShoppingListViewModel>() {
         viewModel =ShoppingListViewModel(application)
     }
 
-    fun trashButtonClicked(view: View) {
-        val ingredientDao = IngredientDao(application)
-        ingredientDao.delete(Ingredient(idIngredient = view.tag as Int))
-
-        adapter.ingredients.clear();
-        Handler(Looper.getMainLooper()).post(Runnable { adapter.notifyDataSetChanged() })
-        viewModel.fetchIngredients()
-
-        recycler_view.adapter = null
-        recycler_view.adapter = adapter
-        //Handler(Looper.getMainLooper()).post(Runnable { adapter.notifyDataSetChanged() })
-
-    }
-
     fun clearButtonClicked(view: View) {
-        println("d")
+        viewModel.deleteAll();
+        adapter.ingredients.clear();
+        adapter.notifyDataSetChanged()
     }
 }

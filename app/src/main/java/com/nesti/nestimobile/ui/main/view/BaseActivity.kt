@@ -9,6 +9,8 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import com.nesti.nestimobile.R
+import com.nesti.nestimobile.lib.ApplicationConfiguration
+import com.nesti.nestimobile.lib.NestiMobileApplication
 
 abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
     protected lateinit var viewModel: TViewModel
@@ -44,4 +46,5 @@ abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
         }
         return true
     }
+
 }
