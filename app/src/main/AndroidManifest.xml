@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nesti.nestimobile">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:name=".lib.NestiMobileApplication"
         android:allowBackup="true"
@@ -30,6 +31,9 @@
         <activity android:name=".ui.main.view.CategoryActivity" />
         <activity android:name=".ui.main.view.ShoppingListActivity" />
         <activity android:name=".ui.main.view.RecipeActivity" />
+        <activity android:name=".ui.main.view.ContactActivity" />
+        <activity android:name=".ui.main.view.ProjectActivity" />
+        <activity android:name=".ui.main.view.TeamActivity" />
         <meta-data android:name="android.app.default_searchable"
             android:value="com.nesti.nestimobile.ui.main.view.SearchResultsActivity" />
     </application>

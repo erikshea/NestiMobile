@@ -3,7 +3,7 @@
     <string name="search_hint">Trouver une recette...</string>
     <string name="category_easy">Facile à faire</string>
     <string name="category_traditional">Traditionnelles</string>
-    <string name="category_season">C\'est de saison</string>
+    <string name="category_season">C‘est de saison</string>
     <string name="category_gluten_free">Sans gluten</string>
     <string name="recipe_tab_title_ingredients">ingredients</string>
     <string name="recipe_tab_title_steps">Étapes</string>
@@ -25,4 +25,24 @@
     <string name="tab_text_1">Préparation</string>
     <string name="tab_text_2">Ingrédients</string>
     <string name="item_ingredient_quantity_label">Quantité : </string>
+    <string name="shopping_list_title">Liste de courses</string>
+    <string name="contact_title">Contact</string>
+    <string name="project_title">Projet</string>
+    <string name="project_company">Entreprise</string>
+    <string name="team_title">L‘équipe</string>
+    <string name="contact_name">Erik Shea</string>
+    <string name="contact_email_label">E-mail : </string>
+    <string name="contact_email">erikshea2@gmail.com</string>
+    <string name="contact_telephone_label">Téléphone : </string>
+    <string name="contact_telephone">06 95 92 01 01</string>
+    <string name="contact_description">Auto-entrepreneur pendant 10 ans dans le domaine du web, j‘ai suivi une formation de Concepteur Développeur d‘Applications avec le GRETA afin d‘acquérir la pratique de la création d‘applications desktop, embarquées, et mobiles.</string>
+    <string name="project_description">La société Nesti qui traditionnellement est présente sur le web, souhaite développer une application mobile, dans le but de permettre aux utilisateurs de suivre leurs recettes favorites dans leur cuisine, en regardant soit leur téléphone, soit leur tablette.</string>
+    <string name="project_company_description">Fondé en 1984 par les Frères Hernandez, notre établissement a fourni un excellent chocolat venant des quatres coins du monde. C‘est en 1945, que Marina Hernandez, decide de diversifier l‘entreprise familiale, sans perdre en prestige. Nesti devint alors une référence dans le monde de la patisserie Nous consacrons notre temps à trouver les meilleurs ingrédients à travers le monde.  Afin que vous puissiez en famille et entre amis continuer à perpetuer l‘art de la patisserie. Parce que c‘est toujours un plaisir de partager !</string>
+    <string name="nesti_web_site">http://temeta.com/nesti/administration/</string>
+    <string name="team_lead">Chef de Projet</string>
+    <string name="team_lead_description">Cette application a été élaborée sous la guidance et le regard éternellement critique de Punkie.</string>
+    <string name="team_developper">Développeur</string>
+    <string name="team_developper_description">Développé par Erik Shea</string>
+    <string name="team_thanks">Remerciements</string>
+    <string name="team_thanks_description">Coffea arabica, sans quoi rien ne serait fait.</string>
 </resources>

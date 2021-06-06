@@ -25,7 +25,7 @@ class ShoppingListActivity : BaseActivity<ShoppingListViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_shopping_list)
         super.onCreate(savedInstanceState)
-        setTitle("Liste de courses")
+        title = resources.getString(R.string.shopping_list_title)
         setupObserver()
 
     }

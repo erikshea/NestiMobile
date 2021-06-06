@@ -12,11 +12,11 @@ class ApplicationConfiguration {
         configuration = SAXReader().read(inputStream)
     }
 
-    fun getSingle(xPath: String): Node {
+    fun getNode(xPath: String): Node {
         return configuration.selectSingleNode("//$configurationRootTag/$xPath")
     }
 
-    fun getConfigurationNodes(xPath: String): List<Node> {
+    fun getNodes(xPath: String): List<Node> {
         return configuration.selectNodes("//$configurationRootTag/$xPath")
     }
 }

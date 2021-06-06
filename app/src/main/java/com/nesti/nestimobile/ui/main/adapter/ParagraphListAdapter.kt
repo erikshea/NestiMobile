@@ -18,6 +18,7 @@ class ParagraphListAdapter(
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: Paragraph) {
             itemView.textView_paragraph_content.text = item.content
+            itemView.textView_paragraph_position.text = item.paragraphPosition.toString()
         }
     }
 

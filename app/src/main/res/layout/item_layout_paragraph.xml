@@ -7,11 +7,27 @@
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/textView_paragraph_position"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@drawable/circle"
+        android:fontFamily="@font/fa_solid_900"
+        android:gravity="center"
+        android:textColor="@color/purple_500"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="13" />
+
+    <TextView
         android:id="@+id/textView_paragraph_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:paddingBottom="@dimen/margin_xs"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView_paragraph_position"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,13 @@ package com.nesti.nestimobile.ui.main.view
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.nesti.nestimobile.R
 import com.nesti.nestimobile.lib.ApplicationConfiguration
@@ -41,7 +43,35 @@ abstract class BaseActivity<TViewModel : ViewModel>: AppCompatActivity() {
             }
 
             R.id.menu_list -> {
+                ContextCompat.startActivity(
+                    this,
+                    Intent(applicationContext, ShoppingListActivity::class.java),
+                    Bundle.EMPTY
+                );
+            }
 
+            R.id.menu_contact -> {
+                ContextCompat.startActivity(
+                    this,
+                    Intent(applicationContext, ContactActivity::class.java),
+                    Bundle.EMPTY
+                );
+            }
+
+            R.id.menu_project -> {
+                ContextCompat.startActivity(
+                    this,
+                    Intent(applicationContext, ProjectActivity::class.java),
+                    Bundle.EMPTY
+                );
+            }
+
+            R.id.menu_team -> {
+                ContextCompat.startActivity(
+                    this,
+                    Intent(applicationContext, TeamActivity::class.java),
+                    Bundle.EMPTY
+                );
             }
         }
         return true

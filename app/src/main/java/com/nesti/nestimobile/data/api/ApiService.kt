@@ -37,7 +37,7 @@ class ApiService(configuration: ApplicationConfiguration)  {
 
     private fun buildWithToken(url:String): Rx2ANRequest {
         return Rx2AndroidNetworking.get(url)
-            .addQueryParameter("token", configuration.getSingle("api/@clientToken").stringValue)
+            .addQueryParameter("token", configuration.getNode("api/@clientToken").stringValue)
             .build();
     }
 }

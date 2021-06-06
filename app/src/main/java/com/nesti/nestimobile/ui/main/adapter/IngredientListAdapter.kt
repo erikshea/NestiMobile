@@ -20,7 +20,7 @@ class IngredientListAdapter(
         val ingredientDao = IngredientDao(itemView.context)
 
         fun bind(ingredientRecipe: IngredientRecipe) {
-            itemView.textView_ingredient_name.text = ingredientRecipe.name
+            itemView.textView_ingredient_name.text = ingredientRecipe.name.capitalize()
             itemView.textView_ingredient_quantity.text = ingredientRecipe.quantity.toString()
             itemView.textView_ingredient_unit.text = ingredientRecipe.unitName
             if (ingredientDao.findById(ingredientRecipe.idIngredient) == null) {
@@ -41,9 +41,6 @@ class IngredientListAdapter(
         }
     }
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -60,6 +57,4 @@ class IngredientListAdapter(
     fun addData(list: List<IngredientRecipe>) {
         ingredients.addAll(list)
     }
-
-
 }
