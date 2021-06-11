@@ -52,7 +52,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
                     recycler_view.visibility = View.GONE
                 }
                 Status.ERROR -> {
-                    //Handle Error
                     progress_bar.visibility = View.GONE
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }

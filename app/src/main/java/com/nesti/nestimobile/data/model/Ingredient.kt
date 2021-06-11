@@ -10,7 +10,7 @@ data class Ingredient(
     @SerializedName("name")
     var name: String = "",
     @SerializedName("isChecked")
-    var isChecked: Int = 0
+    var isChecked: Int = 1
 ) : Parcelable {
     constructor(parcel: Parcel) : this() {
         idIngredient = parcel.readInt()

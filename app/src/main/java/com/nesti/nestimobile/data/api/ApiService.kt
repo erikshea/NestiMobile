@@ -7,36 +7,35 @@ import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Single
 
 class ApiService(configuration: ApplicationConfiguration)  {
-    val apiUrl = "http://10.0.2.2/php/nesti_administration/api";
-    //val apiUrl = "https://temeta.com/nesti/administration/api";
     val configuration = configuration
 
+
     fun getRecipesForTag(idTag:Int): Single<List<Recipe>> {
-        return  buildWithToken("$apiUrl/recipesForTag/$idTag")
+        return  buildWithToken("recipesForTag/$idTag")
                 .getObjectListSingle(Recipe::class.java)
     }
     fun getRecipesForPartialName(partialName:String): Single<List<Recipe>> {
-        return  buildWithToken("$apiUrl/recipesForPartialName/$partialName")
+        return  buildWithToken("recipesForPartialName/$partialName")
                 .getObjectListSingle(Recipe::class.java)
     }
 
     fun getTags(): Single<List<Tag>> {
-        return  buildWithToken("$apiUrl/tags")
+        return  buildWithToken("tags")
                 .getObjectListSingle(Tag::class.java)
     }
 
     fun getIngredientRecipes(idRecipe:Int): Single<List<IngredientRecipe>> {
-        return  buildWithToken("$apiUrl/ingredientRecipes/$idRecipe")
+        return  buildWithToken("ingredientRecipes/$idRecipe")
                 .getObjectListSingle(IngredientRecipe::class.java)
     }
 
     fun getParagraphs(idRecipe:Int): Single<List<Paragraph>> {
-        return  buildWithToken("$apiUrl/paragraphs/$idRecipe")
+        return  buildWithToken("paragraphs/$idRecipe")
                 .getObjectListSingle(Paragraph::class.java)
     }
 
-    private fun buildWithToken(url:String): Rx2ANRequest {
-        return Rx2AndroidNetworking.get(url)
+    private fun buildWithToken(action:String): Rx2ANRequest {
+        return Rx2AndroidNetworking.get(configuration.getNode("api/@url").stringValue + "/$action")
             .addQueryParameter("token", configuration.getNode("api/@clientToken").stringValue)
             .build();
     }
