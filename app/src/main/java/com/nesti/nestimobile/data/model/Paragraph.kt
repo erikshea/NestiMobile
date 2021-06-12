@@ -2,6 +2,10 @@ package com.nesti.nestimobile.data.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Ingredient entity
+ * -serializeable to and from JSON
+ */
 class Paragraph (
         @SerializedName("idParagraph")
         var idParagraph: Int = 0,

@@ -58,7 +58,7 @@
         android:layout_width="146dp"
         android:layout_height="146dp"
         android:layout_marginTop="@dimen/margin_medium"
-        android:onClick="contactPhone"
+        android:onClick="launchSite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

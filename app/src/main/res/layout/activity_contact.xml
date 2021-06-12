@@ -65,7 +65,7 @@
             android:layout_marginStart="@dimen/margin_xs"
             android:text="@string/contact_telephone"
             android:textColor="@color/purple_500"
-            android:onClick="contactPhone"
+            android:onClick="launchSite"
             android:textSize="@dimen/text_l"
             app:layout_constraintStart_toEndOf="@id/textView_telephone_label"
             app:layout_constraintTop_toTopOf="@id/textView_telephone_label" />

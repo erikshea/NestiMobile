@@ -4,6 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Tag entity
+ * -serializeable to and from JSON
+ * -parcelable for intent putExtra
+ */
 data class Tag(
     @SerializedName("idTag")
     var idTag: Int = 0,

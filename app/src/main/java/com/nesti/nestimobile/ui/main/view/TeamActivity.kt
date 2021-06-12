@@ -19,7 +19,7 @@ class TeamActivity : BaseActivity<MainViewModel>() {
         title = resources.getString(R.string.team_title)
     }
 
-    override fun setupUI() {
+    override fun setupUi() {
 
     }
 

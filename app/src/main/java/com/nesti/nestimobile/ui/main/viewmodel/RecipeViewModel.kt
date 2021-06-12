@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.nesti.nestimobile.data.model.IngredientRecipe
 import com.nesti.nestimobile.data.model.Paragraph
 import com.nesti.nestimobile.data.model.Recipe
-import com.nesti.nestimobile.data.model.Tag
 import com.nesti.nestimobile.data.repository.RecipeRepository
-import com.nesti.nestimobile.data.repository.TagRepository
 import com.nesti.nestimobile.utils.Resource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -24,7 +22,7 @@ class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
     private fun fetchIngredients() {
         ingredients.postValue(Resource.loading(null))
         compositeDisposable.add(
-                repository.findIngredientRecipes(recipe.idRecipe)
+                repository.findIngredientsForRecipe(recipe.idRecipe)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ list ->
@@ -39,7 +37,7 @@ class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
     private fun fetchParagraphs() {
         paragraphs.postValue(Resource.loading(null))
         compositeDisposable.add(
-                repository.findParagraphs(recipe.idRecipe)
+                repository.findParagraphsForRecipe(recipe.idRecipe)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ list ->

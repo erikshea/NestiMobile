@@ -18,13 +18,17 @@ class ProjectActivity : BaseActivity<MainViewModel>() {
         title = resources.getString(R.string.project_title)
     }
 
-    override fun setupUI() {
+    override fun setupUi() {
     }
 
     override fun setupViewModel() {
     }
 
-    fun contactPhone(view: View) {
+    /**
+     * method called when company logo is pressed
+     */
+    fun launchSite(view: View) {
+        // set up and start "view website" activity
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(resources.getString(R.string.nesti_web_site))
         startActivity(intent)

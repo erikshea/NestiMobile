@@ -18,7 +18,9 @@ import com.nesti.nestimobile.utils.Resource
 import com.nesti.nestimobile.utils.Status
 import kotlinx.android.synthetic.main.activity_shopping_list.*
 
-
+/**
+ * activity for shopping list
+ */
 class ShoppingListActivity : BaseActivity<ShoppingListViewModel>() {
     private lateinit var adapter: ShoppingListAdapter
 
@@ -27,10 +29,9 @@ class ShoppingListActivity : BaseActivity<ShoppingListViewModel>() {
         super.onCreate(savedInstanceState)
         title = resources.getString(R.string.shopping_list_title)
         setupObserver()
-
     }
 
-    override fun setupUI() {
+    override fun setupUi() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         adapter = ShoppingListAdapter(arrayListOf())
         recycler_view.addItemDecoration(
@@ -44,37 +45,46 @@ class ShoppingListActivity : BaseActivity<ShoppingListViewModel>() {
 
     private fun setupObserver() {
         viewModel.getIngredients().observe(this, Observer {
+            // viewModel returns an observable Single containing a resource which can have 3
+            // statuses depending on API request status
             when (it.status) {
                 Status.SUCCESS -> {
-                    progress_bar.visibility = View.GONE
-                    it.data?.let { list -> renderList(list) }
-                    recycler_view.visibility = View.VISIBLE
+                    // If Resource's status property becomes "SUCCESS", we know its data property
+                    // contains the fetched list of entities
+                    progress_bar.visibility = View.GONE // hide loading indicator
+                    it.data?.let { list -> renderList(list) } // call renderList with fetched data
+                    recycler_view.visibility = View.VISIBLE // show list
                 }
                 Status.LOADING -> {
-                    progress_bar.visibility = View.VISIBLE
-                    recycler_view.visibility = View.GONE
+                    // If Resource's status becomes "LOADING", its data property is still empty
+                    progress_bar.visibility = View.VISIBLE // show loading indicator
+                    recycler_view.visibility = View.GONE // hide list
                 }
                 Status.ERROR -> {
-                    //Handle Error
-                    progress_bar.visibility = View.GONE
+                    // If Resource's status becomes "ERROR", API fetch failed
+                    progress_bar.visibility = View.GONE // hide loading indicator
+                    // show error message
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
     }
 
+    /**
+     * passes fetched data to this activity's RecyclerView adapter
+     */
     private fun renderList(ingredients: List<Ingredient>) {
-        adapter.addData(ingredients)
-        adapter.notifyDataSetChanged()
+        adapter.setData(ingredients)
     }
 
     override fun setupViewModel() {
         viewModel =ShoppingListViewModel(application)
     }
 
+    /**
+     * called when clear button is pressed
+     */
     fun clearButtonClicked(view: View) {
-        viewModel.deleteAll();
-        adapter.ingredients.clear();
-        adapter.notifyDataSetChanged()
+        viewModel.deleteAll(); // clear ingredients table. will notify observer of change
     }
 }

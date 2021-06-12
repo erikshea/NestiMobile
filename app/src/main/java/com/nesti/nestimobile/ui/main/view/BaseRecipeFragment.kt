@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.nesti.nestimobile.R
-import com.nesti.nestimobile.data.api.ApiService
 import com.nesti.nestimobile.lib.NestiMobileApplication
-import com.nesti.nestimobile.ui.base.ViewModelFactory
+import com.nesti.nestimobile.ui.base.NestiViewModelFactory
 import com.nesti.nestimobile.ui.main.viewmodel.RecipeViewModel
-import com.nesti.nestimobile.utils.ApiHelper
 
 abstract class BaseRecipeFragment: Fragment() {
     lateinit var viewModel:RecipeViewModel
@@ -30,7 +27,7 @@ abstract class BaseRecipeFragment: Fragment() {
 
         viewModel = ViewModelProviders.of(
                 requireActivity(),
-                ViewModelFactory(ApiHelper(ApiService((context!!.applicationContext as NestiMobileApplication).configuration)))
+                NestiViewModelFactory(context!!.applicationContext as NestiMobileApplication)
         ).get(RecipeViewModel::class.java)
     }
 }

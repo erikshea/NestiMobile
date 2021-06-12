@@ -7,13 +7,22 @@ import com.nesti.nestimobile.ui.main.view.RecipeActivity
 import com.nesti.nestimobile.ui.main.view.RecipeIngredientsFragment
 import com.nesti.nestimobile.ui.main.view.RecipeStepsFragment
 
+/**
+ * Adapter for tab pager
+ * @param context activity context
+ * @param fm fragment manager
+ * @param totalTabs number of tabs
+ */
 @Suppress("DEPRECATION")
 internal class RecipeStateAdapter(
         var context: Context,
         fm: FragmentManager,
         var totalTabs: Int
-) :
-        FragmentPagerAdapter(fm) {
+) : FragmentPagerAdapter(fm) {
+    /**
+     * returns fragment to use depending on index of clicked tab
+     * @param position tab index
+     */
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> {
@@ -25,6 +34,10 @@ internal class RecipeStateAdapter(
             else -> getItem(position)
         }
     }
+
+    /**
+     * returns number of tabs
+     */
     override fun getCount(): Int {
         return totalTabs
     }

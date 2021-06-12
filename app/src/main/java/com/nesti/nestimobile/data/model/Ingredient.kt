@@ -4,6 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Ingredient entity
+ * -serializeable to and from JSON
+ * -parcelable for intent putExtra
+ */
 data class Ingredient(
     @SerializedName("idIngredient")
     var idIngredient: Int = 0,
