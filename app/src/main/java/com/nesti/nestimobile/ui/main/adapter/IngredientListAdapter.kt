@@ -4,12 +4,10 @@ import IngredientDao
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.data.model.Ingredient
 import com.nesti.nestimobile.data.model.IngredientRecipe
+import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
+import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.item_layout_ingredient.view.*
 
 /**
@@ -17,20 +15,20 @@ import kotlinx.android.synthetic.main.item_layout_ingredient.view.*
  * @param ingredients list of IngredientRecipe entities
  */
 class IngredientListAdapter( private val ingredients: ArrayList<IngredientRecipe> )
-    : RecyclerView.Adapter<IngredientListAdapter.DataViewHolder>() {
+    : BaseRecyclerViewAdapter<IngredientRecipe, IngredientListAdapter.DataViewHolder>(ingredients) {
 
     /**
      * sets up views for recyclerview lines
      * @param itemView view object for line
      */
-    class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class DataViewHolder(itemView: View) :  BaseDataViewHolder<IngredientRecipe>(itemView) {
         // DAO for sqlite database holding shopping list
-        val ingredientDao = IngredientDao(itemView.context)
+        private val ingredientDao = IngredientDao(itemView.context)
 
         /**
          * binds data to an individual recyclerview line
          */
-        fun bind(ingredientRecipe: IngredientRecipe) {
+        override fun bind(ingredientRecipe: IngredientRecipe) {
             itemView.textView_ingredient_name.text = ingredientRecipe.name.capitalize()
             itemView.textView_ingredient_quantity.text = ingredientRecipe.quantity.toString()
             itemView.textView_ingredient_unit.text = ingredientRecipe.unitName
@@ -66,23 +64,4 @@ class IngredientListAdapter( private val ingredients: ArrayList<IngredientRecipe
                 false
             )
         )
-
-    /**
-     * Determines recyclerview size
-     */
-    override fun getItemCount(): Int = ingredients.size
-
-    /**
-     * Will call our view holder's bind method when a line is displayed
-     */
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) =
-        holder.bind(ingredients[position])
-
-    /**
-     * Sets up the list of entities from which the recyclerView is built
-     */
-    fun addData(list: List<IngredientRecipe>) {
-        ingredients.addAll(list)
-        notifyDataSetChanged()
-    }
 }

@@ -1,25 +1,25 @@
 package com.nesti.nestimobile.ui.main.viewmodel
 
+import androidx.lifecycle.LiveData
+import com.nesti.nestimobile.data.model.Recipe
 import com.nesti.nestimobile.data.repository.RecipeRepository
-import com.nesti.nestimobile.utils.Resource
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.nesti.nestimobile.ui.base.StatusContainer
+import com.nesti.nestimobile.ui.main.viewmodel.base.BaseRecipeListViewModel
 
-class SearchResultsViewModel(private val recipeRepository: RecipeRepository) : BaseRecipeListViewModel(recipeRepository) {
+/**
+ * viewmodel for search results showing a list of recipes
+ */
+class SearchResultsViewModel(private val repository: RecipeRepository)
+    : BaseRecipeListViewModel() {
     var searchTerm:String = "";
 
-    override fun fetchRecipes() {
-        recipes.postValue(Resource.loading(null))
-        compositeDisposable.add(
-                recipeRepository.findAllByPartialName(searchTerm)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ tagList ->
-                            recipes.postValue(Resource.success(tagList))
-                        }, { throwable ->
-                            throwable.printStackTrace();
-                            recipes.postValue(Resource.error("Something Went Wrong", null))
-                        })
-        )
+    /**
+     * get view-ready observable recipes
+     */
+    override fun getRecipes(): LiveData<StatusContainer<List<Recipe>>> {
+        if ( recipes.value == null ){
+            sendToMutableLiveDataWhenInitialized(repository.findAllByPartialName(searchTerm), recipes)
+        }
+        return recipes
     }
 }

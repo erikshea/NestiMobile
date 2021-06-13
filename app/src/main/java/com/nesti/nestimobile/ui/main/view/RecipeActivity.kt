@@ -12,19 +12,22 @@ import com.nesti.nestimobile.ui.main.adapter.MainAdapter
 import com.nesti.nestimobile.lib.NestiMobileApplication
 import com.nesti.nestimobile.ui.base.NestiViewModelFactory
 import com.nesti.nestimobile.ui.main.adapter.RecipeStateAdapter
+import com.nesti.nestimobile.ui.main.view.base.BaseActivity
 import com.nesti.nestimobile.ui.main.viewmodel.RecipeViewModel
 
 /**
  * recipe details with two tabs showing ingredients and steps
  */
-class RecipeActivity : BaseActivity<RecipeViewModel>() {
+class RecipeActivity : BaseActivity() {
     lateinit var tabLayout: TabLayout
     lateinit var viewPager: ViewPager
+    lateinit var viewModel: RecipeViewModel
 
     private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupViewModel()
         setContentView(R.layout.activity_recipe)
 
         // set up tab layout and tab pager
@@ -54,7 +57,10 @@ class RecipeActivity : BaseActivity<RecipeViewModel>() {
         title = viewModel.recipe.name;
     }
 
-    override fun setupViewModel() {
+    /**
+     * Initializes viewmodel
+     */
+    private fun setupViewModel() {
         viewModel = ViewModelProviders.of(
             this,
             NestiViewModelFactory(applicationContext as NestiMobileApplication)

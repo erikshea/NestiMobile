@@ -5,13 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.ui.main.adapter.MainAdapter
-import com.nesti.nestimobile.ui.main.viewmodel.MainViewModel
+import com.nesti.nestimobile.ui.main.view.base.BaseActivity
 
-
-class ProjectActivity : BaseActivity<MainViewModel>() {
-    private lateinit var adapter: MainAdapter
-
+/**
+ * projects section
+ */
+class ProjectActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_project)
         super.onCreate(savedInstanceState)
@@ -19,9 +18,6 @@ class ProjectActivity : BaseActivity<MainViewModel>() {
     }
 
     override fun setupUi() {
-    }
-
-    override fun setupViewModel() {
     }
 
     /**

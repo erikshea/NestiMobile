@@ -1,27 +1,24 @@
 package com.nesti.nestimobile.ui.main.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.data.model.IngredientRecipe
 import com.nesti.nestimobile.ui.main.adapter.IngredientListAdapter
-import com.nesti.nestimobile.utils.Status
+import com.nesti.nestimobile.ui.main.view.base.BaseRecipeFragment
 import kotlinx.android.synthetic.main.fragment_recipe_ingredients.*
 
-
+/**
+ * ingredients tab content for a recipe
+ */
 class RecipeIngredientsFragment() : BaseRecipeFragment()  {
     override val layout = R.layout.fragment_recipe_ingredients;
     private lateinit var adapter: IngredientListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupObserver()
+        setupObserver(viewModel.getIngredients()) { ingredients -> adapter.addData(ingredients) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,35 +33,8 @@ class RecipeIngredientsFragment() : BaseRecipeFragment()  {
         recycler_view.adapter = adapter
     }
 
-    private fun setupObserver() {
-        viewModel.getIngredients().observe(this, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    progress_bar.visibility = View.GONE
-                    it.data?.let { items -> renderList(items) }
-                    recycler_view.visibility = View.VISIBLE
-                }
-                Status.LOADING -> {
-                    progress_bar.visibility = View.VISIBLE
-                    recycler_view.visibility = View.GONE
-                }
-                Status.ERROR -> {
-                    //Handle Error
-                    progress_bar.visibility = View.GONE
-                }
-            }
-        })
-    }
-
-    private fun renderList(items: List<IngredientRecipe>) {
-        adapter.addData(items)
-        adapter.notifyDataSetChanged()
-    }
-
-
     override fun onResume() {
         super.onResume()
         adapter.notifyDataSetChanged()
     }
-
 }

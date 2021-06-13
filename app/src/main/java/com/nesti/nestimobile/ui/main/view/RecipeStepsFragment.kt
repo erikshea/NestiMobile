@@ -2,23 +2,23 @@ package com.nesti.nestimobile.ui.main.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nesti.nestimobile.R
-import com.nesti.nestimobile.data.model.Paragraph
 import com.nesti.nestimobile.ui.main.adapter.ParagraphListAdapter
-import com.nesti.nestimobile.utils.Status
+import com.nesti.nestimobile.ui.main.view.base.BaseRecipeFragment
 import kotlinx.android.synthetic.main.fragment_recipe_steps.*
 
-
+/**
+ * steps tab content for a recipe
+ */
 class RecipeStepsFragment() : BaseRecipeFragment()  {
     override val layout = R.layout.fragment_recipe_steps;
     private lateinit var adapter: ParagraphListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupObserver()
+        setupObserver(viewModel.getParagraphs()) { paragraphs -> adapter.addData(paragraphs) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,30 +32,4 @@ class RecipeStepsFragment() : BaseRecipeFragment()  {
         )
         recycler_view.adapter = adapter
     }
-
-    private fun setupObserver() {
-        viewModel.getParagraphs().observe(this, Observer {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    progress_bar.visibility = View.GONE
-                    it.data?.let { items -> renderList(items) }
-                    recycler_view.visibility = View.VISIBLE
-                }
-                Status.LOADING -> {
-                    progress_bar.visibility = View.VISIBLE
-                    recycler_view.visibility = View.GONE
-                }
-                Status.ERROR -> {
-                    //Handle Error
-                    progress_bar.visibility = View.GONE
-                }
-            }
-        })
-    }
-
-    private fun renderList(items: List<Paragraph>) {
-        adapter.addData(items)
-        adapter.notifyDataSetChanged()
-    }
-
 }
