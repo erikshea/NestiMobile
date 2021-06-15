@@ -7,7 +7,7 @@ import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.model.Paragraph
 import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
 import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
-import kotlinx.android.synthetic.main.item_layout_paragraph.view.*
+import kotlinx.android.synthetic.main.item_paragraph.view.*
 
 /**
  * adapter for a recyclerview that shows a recipe's list of steps
@@ -36,7 +36,7 @@ class ParagraphListAdapter( private val items: ArrayList<Paragraph> )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_layout_paragraph, parent,
+                R.layout.item_paragraph, parent,
                 false
             )
         )

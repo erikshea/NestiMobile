@@ -12,7 +12,7 @@ import com.nesti.nestimobile.ui.main.viewmodel.base.BaseRecipeListViewModel
  */
 class CategoryViewModel(private val repository: RecipeRepository)
     : BaseRecipeListViewModel() {
-    lateinit var tag:Tag;
+    lateinit var tag:Tag
 
     /**
      * get view-ready observable recipes

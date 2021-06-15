@@ -8,8 +8,8 @@ import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.model.Ingredient
 import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
 import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
-import kotlinx.android.synthetic.main.item_layout_ingredient.view.textView_ingredient_name
-import kotlinx.android.synthetic.main.item_layout_shopping_list.view.*
+import kotlinx.android.synthetic.main.item_ingredient.view.textView_ingredient_name
+import kotlinx.android.synthetic.main.item_shopping_list.view.*
 
 /**
  * adapter for a recyclerview that shows a shopping list's ingredients
@@ -45,7 +45,7 @@ class ShoppingListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_layout_shopping_list, parent,
+                R.layout.item_shopping_list, parent,
                 false
             )
         )

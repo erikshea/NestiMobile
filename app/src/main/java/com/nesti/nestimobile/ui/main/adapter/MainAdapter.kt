@@ -12,7 +12,7 @@ import com.nesti.nestimobile.data.model.Tag
 import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
 import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
 import com.nesti.nestimobile.ui.main.view.CategoryActivity
-import kotlinx.android.synthetic.main.item_layout_tag.view.*
+import kotlinx.android.synthetic.main.item_tag.view.*
 
 /**
  * adapter for a recyclerview that shows a list of categories (tags)
@@ -49,7 +49,7 @@ class MainAdapter(private val tags: ArrayList<Tag>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                        R.layout.item_layout_tag, parent,
+                        R.layout.item_tag, parent,
                         false
                 )
         )

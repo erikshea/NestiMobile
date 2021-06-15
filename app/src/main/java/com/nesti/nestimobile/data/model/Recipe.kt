@@ -1,6 +1,5 @@
 package com.nesti.nestimobile.data.model
 
-import android.R.attr.description
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -19,15 +18,15 @@ data class Recipe(
         var difficulty: Int = 0,
         @SerializedName("author")
         var author: String = "",
-        @SerializedName("image")
-        var image: String = ""
+        @SerializedName("imageUrl")
+        var imageUrl: String = ""
 ) : Parcelable {
     constructor(parcel: Parcel) : this() {
         idRecipe = parcel.readInt()
         name = parcel.readString().toString()
         difficulty = parcel.readInt()
         author = parcel.readString().toString();
-        image = parcel.readString().toString();
+        imageUrl = parcel.readString().toString();
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -35,7 +34,7 @@ data class Recipe(
         parcel.writeString(name);
         parcel.writeInt(difficulty);
         parcel.writeString(author);
-        parcel.writeString(image);
+        parcel.writeString(imageUrl);
     }
 
     override fun describeContents(): Int {

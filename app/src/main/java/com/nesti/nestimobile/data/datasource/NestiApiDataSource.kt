@@ -68,8 +68,10 @@ class NestiApiDataSource(private val configuration: ApplicationConfiguration): N
      * @return Request object from which we can fetch results
      */
     private fun buildRequestWithToken(route:String): Rx2ANRequest {
-        return Rx2AndroidNetworking.get(configuration.getNode("api/@url").stringValue + "/$route")
-            .addQueryParameter("token", configuration.getNode("api/@clientToken").stringValue)
+        val baseUrl = configuration.getNode("api/@baseUrl").stringValue + "/$route"
+        val apiToken = configuration.getNode("api/@clientToken").stringValue
+        return Rx2AndroidNetworking.get(baseUrl)
+            .addQueryParameter("token", apiToken)
             .build()
     }
 }

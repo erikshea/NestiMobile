@@ -27,6 +27,7 @@ abstract class BaseViewModel: ViewModel() {
         liveData: MutableLiveData<StatusContainer<TObserved>>
     )
     {
+
         liveData.postValue(StatusContainer.loading())
         compositeDisposable.add(
             observable
@@ -36,7 +37,7 @@ abstract class BaseViewModel: ViewModel() {
                     // On success, send liveData a StatusContainer containing the new valid data
                     { observed -> liveData.postValue(StatusContainer.success(observed)) },
                     // On error, send liveData a StatusContainer with a message and an ERROR status
-                    { _ -> liveData.postValue(StatusContainer.error("Problem retrieving data."))
+                    { _ -> liveData.postValue(StatusContainer.error("SThe server is unreachable."))
                 })
         )
     }
@@ -46,6 +47,6 @@ abstract class BaseViewModel: ViewModel() {
      */
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.dispose() // dispose Single on activity change
+        compositeDisposable.dispose() // dispose observables on activity end of life
     }
 }

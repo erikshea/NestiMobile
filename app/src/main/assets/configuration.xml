@@ -1,7 +1,7 @@
 
 <configuration>
     <api
-        url="https://temeta.com/nesti/administration/api"
+        baseUrl="https://temeta.com/nesti/administration/api"
         clientToken="1cc27077a0574dc2efdf7225d2744218"/>
     <localDatabase
         name="NestiShoppingList"

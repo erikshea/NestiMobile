@@ -12,7 +12,7 @@ import com.nesti.nestimobile.data.model.Recipe
 import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
 import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
 import com.nesti.nestimobile.ui.main.view.RecipeActivity
-import kotlinx.android.synthetic.main.item_layout_recipe.view.*
+import kotlinx.android.synthetic.main.item_recipe.view.*
 
 /**
  * adapter for a recyclerview that shows a category's list of recipes
@@ -37,7 +37,7 @@ class RecipeListAdapter( private val recipes: ArrayList<Recipe> )
 
             // fetch image from url given in API response
             Glide.with(itemView.imageView_recipe_image.context)
-                .load(recipe.image)
+                .load(recipe.imageUrl)
                 .into(itemView.imageView_recipe_image)
 
             itemView.setOnClickListener {
@@ -55,7 +55,7 @@ class RecipeListAdapter( private val recipes: ArrayList<Recipe> )
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                        R.layout.item_layout_recipe, parent,
+                        R.layout.item_recipe, parent,
                         false
                 )
         )

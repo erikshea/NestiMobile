@@ -8,7 +8,7 @@ import com.nesti.nestimobile.R
 import com.nesti.nestimobile.data.model.IngredientRecipe
 import com.nesti.nestimobile.ui.main.adapter.base.BaseDataViewHolder
 import com.nesti.nestimobile.ui.main.adapter.base.BaseRecyclerViewAdapter
-import kotlinx.android.synthetic.main.item_layout_ingredient.view.*
+import kotlinx.android.synthetic.main.item_ingredient.view.*
 
 /**
  * adapter for a recyclerview that shows a recipe's list of ingredients
@@ -60,7 +60,7 @@ class IngredientListAdapter( private val ingredients: ArrayList<IngredientRecipe
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DataViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_layout_ingredient, parent,
+                R.layout.item_ingredient, parent,
                 false
             )
         )
