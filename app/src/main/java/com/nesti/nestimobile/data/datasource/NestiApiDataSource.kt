@@ -18,10 +18,10 @@ class NestiApiDataSource(private val configuration: ApplicationConfiguration): N
      * @param idTag ID of tag
      * @return List of recipes wrapped in an observable Single
      */
-    override fun findAllRecipesByTag(idTag:Int): Single<List<Recipe>> {
-        return  buildRequestWithToken("recipesForTag/$idTag")
-                .getObjectListSingle(Recipe::class.java)
-    }
+override fun findAllRecipesByTag(idTag:Int): Single<List<Recipe>> {
+    return  buildRequestWithToken("recipesForTag/$idTag")
+            .getObjectListSingle(Recipe::class.java)
+}
 
     /**
      * Get recipes whose name contains a given string
